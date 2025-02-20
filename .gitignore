@@ -1,2 +1,3 @@
 **/*.class
-genchunk
+genchunk.x86_64
+test.cnk

@@ -1,14 +1,15 @@
-import chunk.util.Errors;
-import chunk.util.Errors.PermissionType;
 import java.io.File;
 
-public class Chunk {
+import genchunk.util.*;
+
+public class Genchunk {
     /* Program entrypoint.
      * Return codes:
      *   0 - OK
      *   1 - No source file given
      *   2 - Source file not found
      *   3 - Insufficient permissions
+     *   4 - Unknown token
      *   255 - Unknown fatal error
      */
     public static void main(String[] args) {
@@ -30,7 +31,9 @@ public class Chunk {
 
         // Check if permitted to read, else error out
         if (!sourceFile.canRead()) {
-            Errors.insufficientPermissions(PermissionType.READ, path);
+            Errors.insufficientPermissions(Errors.PermissionType.READ, path);
         }
+
+        Lexer.lex("chunkExampleKeyword 2 + 4 ;");
     }
 }

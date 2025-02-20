@@ -1,4 +1,4 @@
-package chunk.util;
+package genchunk.util;
 
 public class Errors {
     public enum PermissionType {
@@ -22,5 +22,9 @@ public class Errors {
 
     public static void insufficientPermissions(PermissionType permissionType, String path) {
         fatalError(3, "Insufficient " + permissionType.toString().toLowerCase() + " permissions on " + path);
+    }
+
+    public static void unknownToken(String rawValue) {
+        fatalError(4, "Unknown token: " + rawValue);
     }
 }
